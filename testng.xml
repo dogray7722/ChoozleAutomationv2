@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="ChoozleAutomationv2">
+
+    <test name="Local Safari Test" >
+        <parameter name="browser" value="safari"></parameter>
+        <packages>
+            <package name="com.choozletests"></package>
+        </packages>
+    </test>
+    <test name="Local FF Test" >
+        <parameter name="browser" value="firefox"></parameter>
+        <packages>
+            <package name="com.choozletests"></package>
+        </packages>
+    </test>
+    <test name="Local Chrome Test" >
+        <parameter name="browser" value="chrome"></parameter>
+        <packages>
+            <package name="com.choozletests"></package>
+        </packages>
+    </test>
+
+</suite>
