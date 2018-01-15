@@ -2,12 +2,12 @@
 
 <suite name="ChoozleAutomationv2">
 
-    <test name="Local Safari Test" >
-        <parameter name="browser" value="safari"></parameter>
-        <packages>
-            <package name="com.choozletests"></package>
-        </packages>
-    </test>
+    <!--<test name="Local Safari Test" >-->
+        <!--<parameter name="browser" value="safari"></parameter>-->
+        <!--<packages>-->
+            <!--<package name="com.choozletests"></package>-->
+        <!--</packages>-->
+    <!--</test>-->
     <test name="Local FF Test" >
         <parameter name="browser" value="firefox"></parameter>
         <packages>

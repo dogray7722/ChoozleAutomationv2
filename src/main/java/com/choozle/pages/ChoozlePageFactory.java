@@ -32,26 +32,24 @@ public class ChoozlePageFactory {
     @FindBy(how = How.CSS,using = "regionLabel")
     WebElement accounts;
 
-    public void login_logout(String uid, String pass)
-    {
+    public void login_base(String uid, String pass){
         username.sendKeys(uid);
         password.sendKeys(pass);
         submit.click();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Hi ")));
         element.click();
-        WebDriverWait wait1 = new WebDriverWait(driver, 5);
+    }
+
+    public void login_logout(String uid, String pass)
+    {
+        login_base(uid, pass);
         logout.click();
     }
 
     public void login_choozle(String uid, String pass)
     {
-        username.sendKeys(uid);
-        password.sendKeys(pass);
-        submit.click();
-        WebDriverWait wait = new WebDriverWait(driver, 6);
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Hi ")));
-        element.click();
+        login_base(uid, pass);
         WebDriverWait wait1 = new WebDriverWait(driver, 6);
         WebElement element1 = wait1.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("User Info")));
         element1.click();
