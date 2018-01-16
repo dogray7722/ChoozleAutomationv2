@@ -17,12 +17,14 @@ public class TitlePageTest extends DriverFactory {
     ChoozlePageFactory czData;
 
     @BeforeClass
-    public void setup() throws Exception {
+    public void setup() throws Exception
+    {
         czData = PageFactory.initElements(driver, ChoozlePageFactory.class);
     }
 
     @BeforeTest
-    public void launchBrowser() {
+    public void launchBrowser()
+    {
         driver.manage().window().maximize();
         driver.get(url);
     }
@@ -37,17 +39,21 @@ public class TitlePageTest extends DriverFactory {
     public void LogInLogOut(String email, String pass)
     {
         czData.login_logout(email, pass);
-        czData.login_choozle(email, pass);//Need an assert statement here
+
+        czData.login_userinfo(email, pass);
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/users/edit/1");
     }
 
-//    @Test(dataProvider = "login", dataProviderClass = DataPackage.class)
-//    public void UserInfo(String email, String pass)
-//    {
-//        czData.login_choozle(email, pass);//Need an assert statement here
-//    }
+    @Test(dataProvider = "login", dataProviderClass = DataPackage.class)
+    public void MyAccounts(String email, String pass){
+        czData.login_myaccounts(email, pass);
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts");
+    }
 
     @AfterTest
-    public void tearDown(){
+    public void tearDown()
+    {
         driver.quit();
     }
+
 }

@@ -29,13 +29,22 @@ public class ChoozlePageFactory {
     @FindBy(how = How.LINK_TEXT,using = "Logout")
     WebElement logout;
 
-    @FindBy(how = How.CSS,using = "regionLabel")
+    @FindBy(how = How.LINK_TEXT,using = "My User Info")
+    WebElement userinfo;
+
+    @FindBy(how = How.LINK_TEXT,using = "My Accounts")
     WebElement accounts;
+
 
     public void login_base(String uid, String pass){
         username.sendKeys(uid);
         password.sendKeys(pass);
         submit.click();
+        click_hi_user();
+    }
+
+    public void click_hi_user()
+    {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Hi ")));
         element.click();
@@ -47,13 +56,20 @@ public class ChoozlePageFactory {
         logout.click();
     }
 
-    public void login_choozle(String uid, String pass)
+    public void login_userinfo(String uid, String pass)
     {
         login_base(uid, pass);
-        WebDriverWait wait1 = new WebDriverWait(driver, 6);
-        WebElement element1 = wait1.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("User Info")));
-        element1.click();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(userinfo));
+        element.click();
     }
 
+    public void login_myaccounts(String uid, String pass)
+    {
+        click_hi_user();
+        WebDriverWait wait1 = new WebDriverWait(driver, 5);
+        WebElement element1 = wait1.until(ExpectedConditions.elementToBeClickable(accounts));
+        element1.click();
+    }
 
 }
