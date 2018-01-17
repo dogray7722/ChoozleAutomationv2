@@ -35,6 +35,21 @@ public class ChoozlePageFactory {
     @FindBy(how = How.LINK_TEXT,using = "My Accounts")
     WebElement accounts;
 
+    @FindBy(how = How.LINK_TEXT,using = "Go to Admin")
+    WebElement gotoadmin;
+
+    @FindBy(how = How.LINK_TEXT,using = "Tag Queue")
+    WebElement tagqueue;
+
+    @FindBy(how = How.LINK_TEXT,using = "Users")
+    WebElement users;
+
+    @FindBy(how = How.LINK_TEXT,using = "Master Accounts")
+    WebElement masteraccounts;
+
+    @FindBy(how = How.LINK_TEXT,using = "Reports")
+    WebElement reports;
+
 
     public void login_base(String uid, String pass){
         username.sendKeys(uid);
@@ -45,7 +60,7 @@ public class ChoozlePageFactory {
 
     public void click_hi_user()
     {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Hi ")));
         element.click();
     }
@@ -64,12 +79,48 @@ public class ChoozlePageFactory {
         element.click();
     }
 
-    public void login_myaccounts(String uid, String pass)
+    public void login_myaccounts()
     {
         click_hi_user();
         WebDriverWait wait1 = new WebDriverWait(driver, 5);
         WebElement element1 = wait1.until(ExpectedConditions.elementToBeClickable(accounts));
         element1.click();
+    }
+
+    public void gotoadmin()
+    {
+        click_hi_user();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(gotoadmin));
+        element.click();
+    }
+
+    public void tagqueue()
+    {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(tagqueue));
+        element.click();
+    }
+
+    public void users()
+    {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(users));
+        element.click();
+    }
+
+    public void masteraccounts()
+    {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(masteraccounts));
+        element.click();
+    }
+
+    public void reports()
+    {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(reports));
+        element.click();
     }
 
 }

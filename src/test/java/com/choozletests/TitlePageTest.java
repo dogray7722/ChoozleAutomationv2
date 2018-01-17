@@ -4,10 +4,7 @@ import com.choozle.data.DataPackage;
 import com.choozle.data.DriverFactory;
 import org.openqa.selenium.support.PageFactory;
 import com.choozle.pages.ChoozlePageFactory;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.testng.Assert;
 
 public class TitlePageTest extends DriverFactory {
@@ -44,16 +41,15 @@ public class TitlePageTest extends DriverFactory {
         Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/users/edit/1");
     }
 
-    @Test(dataProvider = "login", dataProviderClass = DataPackage.class)
-    public void MyAccounts(String email, String pass){
-        czData.login_myaccounts(email, pass);
+    @Test
+    public void MyAccounts(){
+        czData.login_myaccounts();
         Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts");
+
+        czData.gotoadmin();
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/admins/master_account/index");
     }
 
-    @AfterTest
-    public void tearDown()
-    {
-        driver.quit();
-    }
+
 
 }
