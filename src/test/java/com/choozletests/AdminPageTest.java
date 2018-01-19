@@ -88,12 +88,5 @@ public class AdminPageTest extends DriverFactory{
         Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/c_m_s_pages");
     }
 
-    @AfterClass
-    public void tearDown()
-    {
-        driver.quit();
-    }
-
-
 
 }

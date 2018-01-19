@@ -68,6 +68,12 @@ public class ChoozlePageFactory {
     @FindBy(how = How.LINK_TEXT,using = "Subscriptions")
     WebElement subscriptions;
 
+    @FindBy(how = How.LINK_TEXT,using = "Accounts")
+    WebElement accountsmanagement;
+
+    @FindBy(how = How.XPATH,using = "//*[@id=\"accounts-list\"]/tbody/tr[1]/td[6]/a[2]")
+    WebElement account2pause;
+
 
 
     public void login_base(String uid, String pass){
@@ -94,14 +100,12 @@ public class ChoozlePageFactory {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(clickme));
         clickme.click();
-
     }
 
     public void login_userinfo(String uid, String pass)
     {
         login_base(uid, pass);
         clickElement(userinfo);
-
     }
 
     public void login_myaccounts()
@@ -156,14 +160,21 @@ public class ChoozlePageFactory {
         clickElement(ipsearches);
     }
 
+    public void subscriptions()
+    {
+        clickElement(subscriptions);
+    }
+
     public void content()
     {
         clickElement(content);
     }
 
-    public void subscriptions()
+    public void accounts()
     {
-        clickElement(subscriptions);
+        clickElement(accountsmanagement);
     }
+
+    public void pauseAccount() { clickElement(account2pause); }
 
 }

@@ -10,15 +10,17 @@
                 </class>
                 <class name="com.choozletests.AdminPageTest">
                 </class>
-        </classes>
-    </test>
-    <test name="Local firefox test" preserve-order="true">
-        <parameter name="browser" value="firefox"></parameter>
-        <classes>
-                <class name="com.choozletests.TitlePageTest">
-                </class>
-                <class name="com.choozletests.AdminPageTest">
+                <class name="com.choozletests.PauseAccountTest">
                 </class>
         </classes>
     </test>
+    <!--<test name="Local firefox test" preserve-order="true">-->
+        <!--<parameter name="browser" value="firefox"></parameter>-->
+        <!--<classes>-->
+                <!--<class name="com.choozletests.TitlePageTest">-->
+                <!--</class>-->
+                <!--<class name="com.choozletests.AdminPageTest">-->
+                <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
 </suite>
