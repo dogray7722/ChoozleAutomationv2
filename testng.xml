@@ -21,6 +21,8 @@
                 <!--</class>-->
                 <!--<class name="com.choozletests.AdminPageTest">-->
                 <!--</class>-->
+                <!--<class name="com.choozletests.PauseAccountTest">-->
+                <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
 </suite>

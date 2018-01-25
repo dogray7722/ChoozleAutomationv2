@@ -1,14 +1,14 @@
 package com.choozle.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.sql.Driver;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ChoozlePageFactory {
@@ -71,9 +71,17 @@ public class ChoozlePageFactory {
     @FindBy(how = How.LINK_TEXT,using = "Accounts")
     WebElement accountsmanagement;
 
-    @FindBy(how = How.XPATH,using = "//*[@id=\"accounts-list\"]/tbody/tr[1]/td[6]/a[2]")
+    @FindBy(how = How.XPATH,using = "//*[@id=\"accounts-list\"]/tbody/tr[1]/td[1]")
     WebElement account2pause;
 
+    @FindBy(how = How.XPATH,using = ".//*[@id='accounts-list']/tbody/tr[1]/td[6]/a[2]")
+    WebElement pauseAccount;
+
+    @FindBy(how = How.CSS,using = "//*[@id=\"s2id_autogen1\"]/a/span[1]")
+    WebElement accounttypedd;
+
+    @FindBy(how = How.XPATH,using = "//*[@id=\"select2-drop\"]/ul/li[4]/div")
+    WebElement paused;
 
 
     public void login_base(String uid, String pass){
@@ -119,6 +127,7 @@ public class ChoozlePageFactory {
         click_hi_user();
         clickElement(gotoadmin);
     }
+
 
     public void tagqueue()
     {
@@ -175,6 +184,60 @@ public class ChoozlePageFactory {
         clickElement(accountsmanagement);
     }
 
-    public void pauseAccount() { clickElement(account2pause); }
+    String useLater = "";
+
+    public boolean isAlertPresent()
+    {
+        boolean presentFlag = false;
+
+        try {
+            Alert alert =driver.switchTo().alert();
+            presentFlag = true;
+            alert.accept();
+        } catch (NoAlertPresentException ex) {
+            ex.printStackTrace();
+        }
+
+        return presentFlag;
+    }
+
+    public void pauseAccount() {
+        useLater = account2pause.getText();
+        System.out.println("We are pausing this account: " + useLater);
+        clickElement(pauseAccount);
+        isAlertPresent();
+        System.out.println(useLater + " has been paused successfully");
+    }
+
+    public void unpause()
+    {
+        //Create an Array List of the table rows
+        List<WebElement> table = driver.findElements(By.xpath(".//*[@id=\"accounts-list\"]//tr"));
+
+        //Get the number of rows in the table - 1 to account for the table header
+        int tableSize = table.size() - 1;
+        System.out.println("The table has " + tableSize + " rows");
+
+        //Create an Array List to hold our account names
+        List<String> obj1 = new ArrayList();
+
+        //Initialize a variable to hold the index for the table row with content that matches the string we defined above
+        int match = 0;
+
+        //Pump each account into our array
+        for (int i = 0; i < tableSize; i++) {
+            obj1.add(driver.findElement(By.xpath("//*[@id=\"accounts-list\"]/tbody/tr[" + (i + 1) + "]/td[1]")).getText());
+
+            if (obj1.get(i).contains(useLater)) {
+                match = i + 1;
+                System.out.println("Click the Unpause account button on table row " + (match));
+                driver.findElement(By.xpath("//*[@id=\"accounts-list\"]/tbody/tr[" + match + "]/td[6]/a")).click();
+            }
+        }
+    }
+
+    public void accountStatusArrow() { clickElement(accounttypedd); }
+
+    public void paused() { clickElement(paused); }
 
 }
