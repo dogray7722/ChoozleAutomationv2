@@ -1,7 +1,7 @@
 package com.choozletests;
 
 import com.choozle.data.DriverFactory;
-import com.choozle.pages.ChoozlePageFactory;
+import com.choozle.pages.PauseAccountFactory;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -11,12 +11,12 @@ import org.testng.annotations.Test;
 
 public class PauseAccountTest extends DriverFactory {
 
-    ChoozlePageFactory czData;
+    PauseAccountFactory czData;
 
     @BeforeClass
     public void setup() throws Exception
     {
-        czData = PageFactory.initElements(driver, ChoozlePageFactory.class);
+        czData = PageFactory.initElements(driver, PauseAccountFactory.class);
     }
 
     @Test

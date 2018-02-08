@@ -2,17 +2,17 @@
 
 <suite name="ChoozleAutomationv2">
 
-    <!--<test name="Local Chrome test" preserve-order="true">-->
-        <!--<parameter name="browser" value="chrome"></parameter>-->
-            <!--<classes>-->
-                <!--<class name="com.choozletests.TitlePageTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.AdminPageTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.PauseAccountTest">-->
-                <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="Local Chrome test" preserve-order="true">
+        <parameter name="browser" value="chrome"></parameter>
+            <classes>
+                <class name="com.choozletests.TitlePageTest">
+                </class>
+                <class name="com.choozletests.AdminPageTest">
+                </class>
+                <class name="com.choozletests.PauseAccountTest">
+                </class>
+        </classes>
+    </test>
     <test name="Local firefox test" preserve-order="true">
         <parameter name="browser" value="firefox"></parameter>
         <classes>

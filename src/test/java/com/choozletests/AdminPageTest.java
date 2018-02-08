@@ -1,21 +1,20 @@
 package com.choozletests;
 
 import com.choozle.data.DriverFactory;
-import com.choozle.pages.ChoozlePageFactory;
+import com.choozle.pages.AdminPageFactory;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class AdminPageTest extends DriverFactory{
 
-    ChoozlePageFactory czData;
+    AdminPageFactory czData;
 
     @BeforeClass
     public void setup() throws Exception
     {
-        czData = PageFactory.initElements(driver, ChoozlePageFactory.class);
+        czData = PageFactory.initElements(driver, AdminPageFactory.class);
     }
 
     @Test (priority = 1)

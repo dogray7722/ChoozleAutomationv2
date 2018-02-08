@@ -3,7 +3,7 @@ package com.choozletests;
 import com.choozle.data.DataPackage;
 import com.choozle.data.DriverFactory;
 import org.openqa.selenium.support.PageFactory;
-import com.choozle.pages.ChoozlePageFactory;
+import com.choozle.pages.TitlePageFactory;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
@@ -11,12 +11,12 @@ public class TitlePageTest extends DriverFactory {
 
     public String url = "http://choozle.vm/users/login";
 
-    ChoozlePageFactory czData;
+    TitlePageFactory czData;
 
     @BeforeClass
     public void setup() throws Exception
     {
-        czData = PageFactory.initElements(driver, ChoozlePageFactory.class);
+        czData = PageFactory.initElements(driver, TitlePageFactory.class);
     }
 
     @BeforeTest
