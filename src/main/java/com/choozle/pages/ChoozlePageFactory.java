@@ -1,6 +1,7 @@
 package com.choozle.pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,13 +18,13 @@ public class ChoozlePageFactory {
 
     public ChoozlePageFactory(WebDriver driver) { this.driver=driver; }
 
-    @FindBy(how = How.ID,using = "UserEmail")
+    @FindBy(how = How.ID,using = "UserEmail")//login page
     WebElement username;
 
-    @FindBy(how = How.ID,using = "UserPassword")
+    @FindBy(how = How.ID,using = "UserPassword")//login page
     WebElement password;
 
-    @FindBy(how = How.XPATH,using = "//*[@id=\"UserLoginForm\"]/div[3]/div/div/input")
+    @FindBy(how = How.XPATH,using = "//input[@type=\"submit\"]")
     WebElement submit;
 
     @FindBy(how = How.LINK_TEXT,using = "Logout")
@@ -77,10 +78,10 @@ public class ChoozlePageFactory {
     @FindBy(how = How.XPATH,using = ".//*[@id='accounts-list']/tbody/tr[1]/td[6]/a[2]")
     WebElement pauseAccount;
 
-    @FindBy(how = How.CSS,using = "//*[@id=\"s2id_autogen1\"]/a/span[1]")
+    @FindBy(how = How.XPATH,using = "//div[@class=\"large-2 columns\"]")
     WebElement accounttypedd;
 
-    @FindBy(how = How.XPATH,using = "//*[@id=\"select2-drop\"]/ul/li[4]/div")
+    @FindBy(how = How.XPATH,using = "//select[@name='account_state']/option[text()='Paused']")
     WebElement paused;
 
 
@@ -184,7 +185,7 @@ public class ChoozlePageFactory {
         clickElement(accountsmanagement);
     }
 
-    String useLater = "";
+    String account2PauseText = "";
 
     public boolean isAlertPresent()
     {
@@ -202,11 +203,11 @@ public class ChoozlePageFactory {
     }
 
     public void pauseAccount() {
-        useLater = account2pause.getText();
-        System.out.println("We are pausing this account: " + useLater);
+        account2PauseText = account2pause.getText();
+        System.out.println("We are pausing this account: " + account2PauseText);
         clickElement(pauseAccount);
         isAlertPresent();
-        System.out.println(useLater + " has been paused successfully");
+        System.out.println("/n" + account2PauseText + " has been paused successfully");
     }
 
     public void unpause()
@@ -216,7 +217,7 @@ public class ChoozlePageFactory {
 
         //Get the number of rows in the table - 1 to account for the table header
         int tableSize = table.size() - 1;
-        System.out.println("The table has " + tableSize + " rows");
+        System.out.println("/n The table has " + tableSize + " rows");
 
         //Create an Array List to hold our account names
         List<String> obj1 = new ArrayList();
@@ -225,18 +226,21 @@ public class ChoozlePageFactory {
         int match = 0;
 
         //Pump each account into our array
+
         for (int i = 0; i < tableSize; i++) {
             obj1.add(driver.findElement(By.xpath("//*[@id=\"accounts-list\"]/tbody/tr[" + (i + 1) + "]/td[1]")).getText());
 
-            if (obj1.get(i).contains(useLater)) {
+            if (obj1.get(i).contains(account2PauseText)) {
                 match = i + 1;
                 System.out.println("Click the Unpause account button on table row " + (match));
-                driver.findElement(By.xpath("//*[@id=\"accounts-list\"]/tbody/tr[" + match + "]/td[6]/a")).click();
+                WebDriverWait wait = new WebDriverWait(driver, 5);
+                WebElement element = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id=\"accounts-list\"]/tbody/tr[" + match + "]/td[6]/a"))));
+                element.click();
             }
         }
     }
 
-    public void accountStatusArrow() { clickElement(accounttypedd); }
+    public void accountStatusArrow() { clickElement(accounttypedd);}
 
     public void paused() { clickElement(paused); }
 
