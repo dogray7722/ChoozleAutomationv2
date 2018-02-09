@@ -4,7 +4,6 @@ import com.choozle.data.DriverFactory;
 import com.choozle.pages.PauseAccountFactory;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -34,13 +33,6 @@ public class PauseAccountTest extends DriverFactory {
         czData.paused();
         czData.unpause();
     }
-
-    @AfterClass
-    public void tearDown()
-    {
-        driver.quit();
-    }
-
 
 
 }

@@ -13,91 +13,91 @@ public class AdminPageFactory {
 
     public AdminPageFactory(WebDriver driver) { this.driver=driver; }
 
-    @FindBy(how = How.LINK_TEXT,using = "Tag Queue")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "Tag Queue")
             WebElement tagqueue;
 
-    @FindBy(how = How.LINK_TEXT,using = "Users")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "Users")
             WebElement users;
 
-    @FindBy(how = How.LINK_TEXT,using = "Master Accounts")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "Master Accounts")
             WebElement masteraccounts;
 
-    @FindBy(how = How.LINK_TEXT,using = "Reports")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "Reports")
             WebElement reports;
 
-    @FindBy(how = How.LINK_TEXT,using = "RAFT")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "RAFT")
             WebElement raft;
 
-    @FindBy(how = How.LINK_TEXT,using = "CRM")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "CRM")
             WebElement crm;
 
-    @FindBy(how = How.LINK_TEXT,using = "Promo Codes")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "Promo Codes")
             WebElement promocodes;
 
-    @FindBy(how = How.LINK_TEXT,using = "IP Searches")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "IP Searches")
             WebElement ipsearches;
 
-    @FindBy(how = How.LINK_TEXT,using = "Content")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "Content")
             WebElement content;
 
-    @FindBy(how = How.LINK_TEXT,using = "Subscriptions")//adminpagetest
+    @FindBy(how = How.LINK_TEXT,using = "Subscriptions")
             WebElement subscriptions;
 
 
-    public void clickElement(WebElement clickme){//titlepagetest + everything else
+    public void clickElement(WebElement clickme){
         WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(clickme));
-        clickme.click();
+        element.click();
     }
 
     public void tagqueue()
     {
         clickElement(tagqueue);
-    }//adminpagetest
+    }
 
     public void users()
     {
         clickElement(users);
-    }//adminpagetest
+    }
 
     public void masteraccounts()
     {
         clickElement(masteraccounts);
-    }//adminpagetest
+    }
 
     public void reports()
     {
         clickElement(reports);
-    }//adminpagetest
+    }
 
     public void raft()
     {
         clickElement(raft);
-    }//adminpagetest
+    }
 
     public void crm()
     {
         clickElement(crm);
-    }//adminpagetest
+    }
 
     public void promocodes()
     {
         clickElement(promocodes);
-    }//adminpagetest
+    }
 
     public void ipsearches()
     {
         clickElement(ipsearches);
-    }//adminpagetest
+    }
 
     public void subscriptions()
     {
         clickElement(subscriptions);
-    }//adminpagetest
+    }
 
     public void content()
     {
         clickElement(content);
-    }//adminpagetest
+    }
 
 }
