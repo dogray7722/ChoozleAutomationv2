@@ -1,5 +1,6 @@
 package com.choozle.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,7 +21,7 @@ public class ManageAccountFactory {
     @FindBy(how = How.XPATH,using = "//tbody/tr/td[3]")
     WebElement accountId;
 
-    @FindBy(how = How.XPATH,using = "//nav[@class=\"sub-bar\"]/section/ul/li[1]")
+    @FindBy(how = How.LINK_TEXT,using = "Account Settings")
     WebElement accountSettings;
 
     @FindBy(how = How.LINK_TEXT,using = "Account Payments")
@@ -60,56 +61,55 @@ public class ManageAccountFactory {
         accountIdText = accountId.getText();
         System.out.println("The ID for the account is " + accountIdText);
         clickElement(account2Manage);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/sites/" + accountIdText);
     }
 
     public void meth_accountSettings()
     {
-        clickElement(accountSettings);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/settings/" + accountIdText);
+        driver.get("http://choozle.vm/accounts_management/settings/" + accountIdText);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Total Margin ']")).isDisplayed());
+
     }
 
     public void meth_accountPayments()
     {
-        clickElement(accountPayments);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/payments/" + accountIdText);
+        driver.get("http://choozle.vm/accounts_management/payments/" + accountIdText);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Add a Custom Payment']")).isDisplayed());
     }
 
     public void meth_campaignFunds()
     {
-        clickElement(campaignFunds);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/campaigns/" + accountIdText);
+        driver.get("http://choozle.vm/accounts_management/campaigns/" + accountIdText);
+        Assert.assertTrue(driver.findElement(By.cssSelector("th.balance-transactions")).isDisplayed());
     }
 
     public void meth_spendReport()
     {
-        clickElement(spendReport);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/spend_report/" + accountIdText);
+        driver.get("http://choozle.vm/accounts_management/spend_report/" + accountIdText);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[contains(text(),\"Partner Spend Reports\")]")).isDisplayed());
     }
 
     public void meth_manageTags()
     {
-        clickElement(manageTags);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/manage_tags/" + accountIdText);
+        driver.get("http://choozle.vm/accounts_management/manage_tags/" + accountIdText);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[text()=\"Ensighten Smart Tag\"]")).isDisplayed());
     }
 
     public void meth_changeLog()
     {
-        clickElement(changeLog);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/changes/" + accountIdText);
+        driver.get("http://choozle.vm/accounts_management/changes/" + accountIdText);
+        Assert.assertTrue(driver.findElement(By.xpath("//td[contains(text(),\"Entity\")]")).isDisplayed());
     }
 
     public void meth_notes()
     {
-        clickElement(notes);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/notes/" + accountIdText);
+        driver.get("http://choozle.vm/accounts_management/notes/" + accountIdText);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[contains(text(),\"New Note\")]")).isDisplayed());
     }
-
 
     public void meth_grapeshotLists()
     {
-        clickElement(grapeshotList);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/grapeshot_lists/" + accountIdText);
+        driver.get("http://choozle.vm/accounts_management/grapeshot_lists/" + accountIdText);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[text()=\"Grapeshot Form\"]")).isDisplayed());
     }
 
     public void backToApp()
