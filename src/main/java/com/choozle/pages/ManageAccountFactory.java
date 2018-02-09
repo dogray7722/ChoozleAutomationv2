@@ -20,7 +20,7 @@ public class ManageAccountFactory {
     @FindBy(how = How.XPATH,using = "//tbody/tr/td[3]")
     WebElement accountId;
 
-    @FindBy(how = How.LINK_TEXT,using = "Account Settings")
+    @FindBy(how = How.XPATH,using = "//nav[@class=\"sub-bar\"]/section/ul/li[1]")
     WebElement accountSettings;
 
     @FindBy(how = How.LINK_TEXT,using = "Account Payments")
@@ -57,58 +57,59 @@ public class ManageAccountFactory {
 
     public void manageAccount()
     {
-        System.out.println("The ID for the account is " + accountId.getText());
+        accountIdText = accountId.getText();
+        System.out.println("The ID for the account is " + accountIdText);
         clickElement(account2Manage);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/sites/" + accountId.getText());
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/sites/" + accountIdText);
     }
 
     public void meth_accountSettings()
     {
         clickElement(accountSettings);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/settings/" + accountId.getText());
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/settings/" + accountIdText);
     }
 
     public void meth_accountPayments()
     {
         clickElement(accountPayments);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/payments/" + accountId.getText());
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/payments/" + accountIdText);
     }
 
     public void meth_campaignFunds()
     {
         clickElement(campaignFunds);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/campaigns/" + accountId.getText());
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/campaigns/" + accountIdText);
     }
 
     public void meth_spendReport()
     {
         clickElement(spendReport);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/spend_report/" + accountId.getText());
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/spend_report/" + accountIdText);
     }
 
     public void meth_manageTags()
     {
         clickElement(manageTags);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/manage_tags/" + accountId.getText());
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/manage_tags/" + accountIdText);
     }
 
     public void meth_changeLog()
     {
         clickElement(changeLog);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/changes/" + accountId.getText());
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/changes/" + accountIdText);
     }
 
     public void meth_notes()
     {
         clickElement(notes);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/notes/" + accountId.getText());
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/notes/" + accountIdText);
     }
 
 
     public void meth_grapeshotLists()
     {
         clickElement(grapeshotList);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/grapeshot_lists/" + accountId.getText());
+        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management/grapeshot_lists/" + accountIdText);
     }
 
     public void backToApp()

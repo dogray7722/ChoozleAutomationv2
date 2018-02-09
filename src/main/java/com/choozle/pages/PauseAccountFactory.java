@@ -73,7 +73,6 @@ public class PauseAccountFactory {
 
         //Get the number of rows in the table - 1 to account for the table header
         int tableSize = table.size() - 1;
-        System.out.println("\n The table has " + tableSize + " rows");
 
         //Create an Array List to hold our account names
         List<String> obj1 = new ArrayList();
