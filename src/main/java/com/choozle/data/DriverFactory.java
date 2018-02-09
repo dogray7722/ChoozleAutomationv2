@@ -24,7 +24,6 @@ public class DriverFactory {
             driver = new ChromeDriver();
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+ "/chromedriver");
         }
-
         else if (browser.equalsIgnoreCase("safari"))
         {
             driver = new SafariDriver();

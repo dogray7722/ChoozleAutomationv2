@@ -1,20 +1,32 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="ChoozleAutomationv2">
-
-    <!--<test name="Local Chrome test" preserve-order="true">-->
-        <!--<parameter name="browser" value="chrome"></parameter>-->
-            <!--<classes>-->
-                <!--<class name="com.choozletests.TitlePageTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.AdminPageTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.PauseAccountTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.ManageAccountTest">-->
-                <!--</class>-->
+    <!--<test name="Local Safari test" preserve-order="true">-->
+        <!--<parameter name="browser" value="safari"></parameter>-->
+        <!--<classes>-->
+            <!--<class name="com.choozletests.TitlePageTest">-->
+            <!--</class>-->
+            <!--<class name="com.choozletests.AdminPageTest">-->
+            <!--</class>-->
+            <!--<class name="com.choozletests.PauseAccountTest">-->
+            <!--</class>-->
+            <!--<class name="com.choozletests.ManageAccountTest">-->
+            <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
+    <test name="Local Chrome test" preserve-order="true">
+        <parameter name="browser" value="chrome"></parameter>
+            <classes>
+                <class name="com.choozletests.TitlePageTest">
+                </class>
+                <class name="com.choozletests.AdminPageTest">
+                </class>
+                <class name="com.choozletests.PauseAccountTest">
+                </class>
+                <class name="com.choozletests.ManageAccountTest">
+                </class>
+        </classes>
+    </test>
     <test name="Local firefox test" preserve-order="true">
         <parameter name="browser" value="firefox"></parameter>
         <classes>

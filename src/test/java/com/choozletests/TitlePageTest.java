@@ -38,6 +38,7 @@ public class TitlePageTest extends DriverFactory {
         czData.login_logout(email, pass);
 
         czData.login_userinfo(email, pass);
+
         Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/users/edit/1");
     }
 
