@@ -76,10 +76,4 @@ public class ManageAccountTest extends DriverFactory{
         czData.backToApp();
     }
 
-
-    @AfterClass
-    public void tearDown()
-    {
-        driver.quit();
-    }
 }
