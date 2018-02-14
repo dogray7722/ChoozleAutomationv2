@@ -8,7 +8,7 @@ public class DataPackage {
     @DataProvider(name = "pages")
     public static Object[][] pages() {
         return new Object[][] {
-                {"http://choozle.vm/users/login", "Choozle: Digital Advertising Made Easy™"}
+                {"http://app.choozle.vm/users/login", "Choozle: Digital Advertising Made Easy™"}
         };
     }
 

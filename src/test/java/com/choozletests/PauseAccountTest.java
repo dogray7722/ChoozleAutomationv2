@@ -23,7 +23,7 @@ public class PauseAccountTest extends DriverFactory {
     {
        czData.accounts();
        czData.pauseAccount();
-       Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts_management");
+       Assert.assertEquals(driver.getCurrentUrl(), "http://app.choozle.vm/accounts_management");
     }
 
     @Test

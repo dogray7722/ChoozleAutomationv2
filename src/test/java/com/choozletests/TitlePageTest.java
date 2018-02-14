@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 public class TitlePageTest extends DriverFactory {
 
-    public String url = "http://choozle.vm/users/login";
+    public String url = "http://app.choozle.vm/users/login";
 
     TitlePageFactory czData;
 
@@ -39,16 +39,16 @@ public class TitlePageTest extends DriverFactory {
 
         czData.login_userinfo(email, pass);
 
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/users/edit/1");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://app.choozle.vm/users/edit/1");
     }
 
     @Test
     public void MyAccounts(){
         czData.login_myaccounts();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://app.choozle.vm/accounts");
 
         czData.gotoadmin();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/admins/master_account/index");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://app.choozle.vm/admins/master_account/index");
     }
 
 

@@ -65,50 +65,50 @@ public class ManageAccountFactory {
 
     public void meth_accountSettings()
     {
-        driver.get("http://choozle.vm/accounts_management/settings/" + accountIdText);
+        driver.get("http://app.choozle.vm/accounts_management/settings/" + accountIdText);
         Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Total Margin ']")).isDisplayed());
 
     }
 
     public void meth_accountPayments()
     {
-        driver.get("http://choozle.vm/accounts_management/payments/" + accountIdText);
+        driver.get("http://app.choozle.vm/accounts_management/payments/" + accountIdText);
         Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Add a Custom Payment']")).isDisplayed());
     }
 
     public void meth_campaignFunds()
     {
-        driver.get("http://choozle.vm/accounts_management/campaigns/" + accountIdText);
+        driver.get("http://app.choozle.vm/accounts_management/campaigns/" + accountIdText);
         Assert.assertTrue(driver.findElement(By.cssSelector("th.balance-transactions")).isDisplayed());
     }
 
     public void meth_spendReport()
     {
-        driver.get("http://choozle.vm/accounts_management/spend_report/" + accountIdText);
+        driver.get("http://app.choozle.vm/accounts_management/spend_report/" + accountIdText);
         Assert.assertTrue(driver.findElement(By.xpath("//*[contains(text(),\"Partner Spend Reports\")]")).isDisplayed());
     }
 
     public void meth_manageTags()
     {
-        driver.get("http://choozle.vm/accounts_management/manage_tags/" + accountIdText);
+        driver.get("http://app.choozle.vm/accounts_management/manage_tags/" + accountIdText);
         Assert.assertTrue(driver.findElement(By.xpath("//*[text()=\"Ensighten Smart Tag\"]")).isDisplayed());
     }
 
     public void meth_changeLog()
     {
-        driver.get("http://choozle.vm/accounts_management/changes/" + accountIdText);
+        driver.get("http://app.choozle.vm/accounts_management/changes/" + accountIdText);
         Assert.assertTrue(driver.findElement(By.xpath("//td[contains(text(),\"Entity\")]")).isDisplayed());
     }
 
     public void meth_notes()
     {
-        driver.get("http://choozle.vm/accounts_management/notes/" + accountIdText);
+        driver.get("http://app.choozle.vm/accounts_management/notes/" + accountIdText);
         Assert.assertTrue(driver.findElement(By.xpath("//*[contains(text(),\"New Note\")]")).isDisplayed());
     }
 
     public void meth_grapeshotLists()
     {
-        driver.get("http://choozle.vm/accounts_management/grapeshot_lists/" + accountIdText);
+        driver.get("http://app.choozle.vm/accounts_management/grapeshot_lists/" + accountIdText);
         Assert.assertTrue(driver.findElement(By.xpath("//*[text()=\"Grapeshot Form\"]")).isDisplayed());
     }
 
@@ -116,7 +116,7 @@ public class ManageAccountFactory {
     {
         System.out.println("Back to the App!");
         clickElement(backToApp);
-        Assert.assertEquals(driver.getCurrentUrl(), "http://choozle.vm/accounts/index");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://app.choozle.vm/accounts/index");
     }
 
 

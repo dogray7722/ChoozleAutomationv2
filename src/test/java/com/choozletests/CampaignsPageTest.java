@@ -31,7 +31,6 @@ public class CampaignsPageTest extends DriverFactory{
     @Test (priority = 3)
     public void writeCampaignName(){
         czData.sendCampaignName();
-
     }
 
     @Test (priority = 4)

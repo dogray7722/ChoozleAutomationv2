@@ -7,8 +7,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.UUID;
+import java.util.Date;
 
 public class CampaignsPageFactory {
 
@@ -19,14 +23,8 @@ public class CampaignsPageFactory {
     @FindBy(how = How.ID,using = "startDate")
     WebElement startDate;
 
-    @FindBy(how = How.XPATH,using = "//button[contains(@aria-label,'February 12')]")
-    WebElement campaignStart;
-
     @FindBy(how = How.ID,using = "endDate")
     WebElement endDate;
-
-    @FindBy(how = How.XPATH,using = "//button[contains(@aria-label,'February 13')]")
-    WebElement campaignEnd;
 
     @FindBy(how = How.XPATH,using = "//input[@value=\"Save and Continue\"]")
     WebElement saveIt;
@@ -42,12 +40,12 @@ public class CampaignsPageFactory {
 
     public void campaignsIndex()
     {
-        driver.get("http://choozle.vm/campaigns");
+        driver.get("http://app.choozle.vm/campaigns");
     }
 
     public void newCampaign()
     {
-        driver.get("http://choozle.vm/campaign/add/choozle");
+        driver.get("http://app.choozle.vm/campaign/add/choozle");
     }
 
     public void sendCampaignName()
@@ -62,7 +60,14 @@ public class CampaignsPageFactory {
 
     public void setCampaignStart()
     {
-        clickElement(campaignStart);
+        Date dt = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dt);
+
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MMMM d");
+        String today = dateFormatter.format(dt);
+        driver.findElement(By.xpath("//button[contains(@aria-label, '" + today + "')]")).click();
+
     }
 
     public void clickEndDate()
@@ -72,7 +77,15 @@ public class CampaignsPageFactory {
 
     public void setCampaignEnd()
     {
-        clickElement(campaignEnd);
+        Date dt = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        c.add(Calendar.DATE,1);
+        dt = c.getTime();
+
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MMMM d");
+        String tomorrow = dateFormatter.format(dt);
+        driver.findElement(By.xpath("//button[contains(@aria-label, '" + tomorrow + "')]")).click();
     }
 
     public void setCampaignBudget()
@@ -92,15 +105,12 @@ public class CampaignsPageFactory {
 
     public void clickBannerAd()
     {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        WebDriverWait block = new WebDriverWait(driver,10);
 
-        driver.switchTo().activeElement();
+        WebElement modal = block.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@style='box-sizing: border-box; padding: 1.875rem;']")));
 
-        driver.findElement(By.xpath("//button")).click();
+        modal.findElement(By.xpath("//button")).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//h4[text()='Add Ad Group']")).isDisplayed());
     }
 
 }

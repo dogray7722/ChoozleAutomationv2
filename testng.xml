@@ -31,21 +31,21 @@
                 </class>
         </classes>
     </test>
-    <!--<test name="Local firefox test" preserve-order="true">-->
-        <!--<parameter name="browser" value="firefox"></parameter>-->
-        <!--<classes>-->
-                <!--<class name="com.choozletests.TitlePageTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.AdminPageTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.PauseAccountTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.ManageAccountTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.AccountsPageTest">-->
-                <!--</class>-->
-                <!--<class name="com.choozletests.CampaignsPageTest">-->
-                <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="Local firefox test" preserve-order="true">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+                <class name="com.choozletests.TitlePageTest">
+                </class>
+                <class name="com.choozletests.AdminPageTest">
+                </class>
+                <class name="com.choozletests.PauseAccountTest">
+                </class>
+                <class name="com.choozletests.ManageAccountTest">
+                </class>
+                <class name="com.choozletests.AccountsPageTest">
+                </class>
+                <class name="com.choozletests.CampaignsPageTest">
+                </class>
+        </classes>
+    </test>
 </suite>
