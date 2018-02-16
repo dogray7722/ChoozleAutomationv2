@@ -79,7 +79,7 @@ public class ManageAccountFactory {
     public void meth_campaignFunds()
     {
         driver.get("http://app.choozle.vm/accounts_management/campaigns/" + accountIdText);
-        Assert.assertTrue(driver.findElement(By.cssSelector("th.balance-transactions")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='s2id_autogen1']//span['Current Campaigns']")).isDisplayed());
     }
 
     public void meth_spendReport()

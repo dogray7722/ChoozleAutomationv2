@@ -73,13 +73,6 @@ public class CampaignsPageTest extends DriverFactory{
         czData.clickBannerAd();
     }
 
-    @AfterClass
-    public void tearDown()
-    {
-        driver.quit();
-    }
-
-
 }
 
 
